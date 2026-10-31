@@ -1,0 +1,1 @@
+make sure that you set both with a "chmod +x *" in this file no sudo
