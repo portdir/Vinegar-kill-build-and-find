@@ -114,11 +114,14 @@ Grab Vinegar/roblox data from last session? [Y/N] or hit enter
 "
 read yesno
 if [[ $yesno =~ ^(Y|y|yes|)$ ]]; then
+
     echo "giting data"
     Vinegarshwithdata
 else
     echo "no data"
     Vinegarsh
 fi
+sleep 1
+pkill -f vinegar
 Vinegarrun
 exit 1
