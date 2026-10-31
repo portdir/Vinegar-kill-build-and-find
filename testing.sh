@@ -95,6 +95,7 @@ Vinegarshwithdata(){
 };
 Vinegarsh(){
 # runs the program
+    rm -rf $backupRBX/*
     setupvars
     Vinegarremove
     Vinegaradd
