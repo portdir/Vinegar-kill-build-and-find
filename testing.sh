@@ -87,7 +87,7 @@ echo -e "
     #-------------------
     # Vinegar sucks ass for one the gay guy. 
     # casts
-    # v4.8.1
+    # v4.23.1
     ------------------
     Grab Vinegar/roblox data from last session? [Y/N] or hit enter
     #-------------------
