@@ -83,43 +83,36 @@ Vinegarrun(){
     # runs Vinegar so i can kill it later with Prejudice
     flatpak run $FlatVinegar
 };
-Vinegarshwithdata(){
-# runs the program
-    setupvars   
-    Vinegargrabdata
-    Vinegarremove
-    Vinegaradd
-    Vinegarrunforsetup 
-    Vinegaradddata
-    echo "im done installing $FlatVinegar $USER"
-};
-Vinegarsh(){
-# runs the program
-    rm -rf $backupRBX/*
-    setupvars
-    Vinegarremove
-    Vinegaradd
-    Vinegarrunforsetup
-    echo "im done installing $FlatVinegar $USER"
-};
-
 echo -e "
-#-------------------
-# Vinegar sucks ass for one the gay guy. 
-# casts
-# v4.8.1
-------------------
-Grab Vinegar/roblox data from last session? [Y/N] or hit enter
-#-------------------
+    #-------------------
+    # Vinegar sucks ass for one the gay guy. 
+    # casts
+    # v4.8.1
+    ------------------
+    Grab Vinegar/roblox data from last session? [Y/N] or hit enter
+    #-------------------
 "
 read yesno
 if [[ $yesno =~ ^(Y|y|yes|)$ ]]; then
+        echo "giting data"
+        # runs the program with data>?
+        setupvars   
+        Vinegargrabdata
+        Vinegarremove
+        Vinegaradd
+        Vinegarrunforsetup 
+        Vinegaradddata
+        echo "im done installing $FlatVinegar $USER"
+    else
+        echo "no data"
+        # runs the program no data
+        rm -rf $backupRBX/*
+        setupvars
+        Vinegarremove
+        Vinegaradd
+        Vinegarrunforsetup
+        echo "im done installing $FlatVinegar $USER"
 
-    echo "giting data"
-    Vinegarshwithdata
-else
-    echo "no data"
-    Vinegarsh
 fi
 sleep 1
 pkill -f vinegar
