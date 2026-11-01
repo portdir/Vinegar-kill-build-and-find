@@ -58,19 +58,19 @@ UNINSTALL_Vinegar(){
     else
     echo no file 1 "$VINEGAR_DIR"
     fi
-
-    if [ -d "$RMDIRflatpak" ]; then
-    rm -rf $RMDIRflatpak
-    else
-    echo no file 2 $RMDIRflatpak 
-    fi
+    
+    # if [ -d "$RMDIRflatpak" ]; then
+    # rm -rf $RMDIRflatpak
+    # else
+    # echo no file 2 $RMDIRflatpak 
+    # fi
 };
 
 INSTALL_Vinegar(){
 # builds Vinegar
 MAKE_LINE
 echo -e "installing $FLATPAK_ID for $USER\n"
-flatpak install --user -y flathub "$FLATPAK_ID"
+flatpak install  -y flathub "$FLATPAK_ID"
 MAKE_LINE
 echo -e " making config.toml for $USER\n"
 # config.toml
@@ -155,4 +155,5 @@ flatpak kill "$FLATPAK_ID" &>/dev/null || true
 MAKE_LINE
 sleep 1
 konsole -e flatpak run $FLATPAK_ID 
+
 sleep 10000
