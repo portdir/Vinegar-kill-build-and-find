@@ -1,0 +1,9 @@
+debug = true
+
+[studio]
+channel = "LIVE"
+discord_rpc = false 
+renderer = "Vulkan"
+webview = ""
+[studio.env]
+PROTON_ENABLE_WAYLAND = "1"

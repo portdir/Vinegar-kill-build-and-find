@@ -134,7 +134,7 @@ MAKE_BACKUP_FILES(){
         testine=$(($testine + 1)) && echo -e "$(date --rfc-3339 ns) [CHECK_TEST_remove] made it to killing a VINEGAR pid of $VINEGAR_PID ? $testine " >> log.log
     fi
     local log_files=("$VINEGAR_DIR"/cache/vinegar/logs/*) 
-    local meow=$(grep -q 'INF Goodbye!' $VINEGAR_DIR/cache/vinegar/logs/"$(ls -1rt $VINEGAR_DIR/cache/vinegar/logs/| tail -n1 )" ) 
+    local meow=$(grep -q 'DBG Backed up Studio Registry' $VINEGAR_DIR/cache/vinegar/logs/"$(ls -1rt $VINEGAR_DIR/cache/vinegar/logs/| tail -n1 )" ) 
 
     if [ -f "${log_files[0]}" ]; then
         testine=$(($testine + 1)) && echo -e "$(date --rfc-3339 ns) [CHECK_TEST_remove] made it to there are logs? $testine " >> log.log
@@ -160,6 +160,9 @@ MAKE_BACKUP_FILES(){
 COPY_BACKUP_TO_Vinegar(){
     echo -e "$(date --rfc-3339 ns) [CHECK_fun] COPY_BACKUP_TO_Vinegar" >> log.log
     #take from backup move back to RBXs
+    [[ -d "$DATA_TARGET" ]] && rm -rf "${DATA_TARGET:?}" 2>&1 | tee -a log.log
+    [[ ! -d "$DATA_TARGET" ]] && mkdir -p "$DATA_TARGET/data/vinegar/" 2>&1 | tee -a log.log
+    sleep 1
     [[ -d "$BACKUP_DIR" && -d "$DATA_TARGET" ]] && cp -rf "${BACKUP_DIR:?}"/data/vinegar/. "$DATA_TARGET" 2>&1 | tee -a log.log
 };
 
@@ -184,22 +187,27 @@ $(MAKE_LINE)
         echo -e "\nMoveing Data" 
         # runs the program with data ? 
         echo "MAKE_BACKUP_FILES"
+
         MAKE_BACKUP_FILES
         MAKE_LINE
         echo "UNINSTALL_Vinegar"
+
         sleep 1
         UNINSTALL_Vinegar
         MAKE_LINE
         echo "INSTALL_Vinegar"
+
         INSTALL_Vinegar
         MAKE_LINE
         echo "RUN_Vinegar_FOR_SETUP"
+
         RUN_Vinegar_FOR_SETUP
         MAKE_LINE
         echo "COPY_BACKUP_TO_Vinegar"
+
         COPY_BACKUP_TO_Vinegar
     else
-        TEST_FUN_DEL_ALL
+        
         MAKE_LINE
         echo "No Data / Removing BACKUP"
         # runs the program no data
