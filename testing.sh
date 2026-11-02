@@ -205,10 +205,9 @@ $(MAKE_LINE)
         RUN_Vinegar_FOR_SETUP
         MAKE_LINE
         echo "COPY_BACKUP_TO_Vinegar"
-
+    elif [[ $yesno =~ ^([Nn][Oo]|[Nn])$ ]]; then
         COPY_BACKUP_TO_Vinegar
-    else
-        
+
         MAKE_LINE
         echo "No Data / Removing BACKUP"
         # runs the program no data
@@ -222,6 +221,9 @@ $(MAKE_LINE)
         MAKE_LINE
         echo "RUN_Vinegar_FOR_SETUP"
         RUN_Vinegar_FOR_SETUP
+    else 
+    echo -e "$(date --rfc-3339 ns) [ERROR]  $USER That was not a input" 2>&1 | tee -a log.log
+    exit 1
     fi
     echo -e "$(date --rfc-3339 ns) [CHECK] im done installing $FLATPAK_ID for $USER" 2>&1 | tee -a log.log
 
