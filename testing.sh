@@ -148,7 +148,8 @@ MAKE_BACKUP_FILES(){
                 # git the rbx appdata from your file
                 sleep 1
                 testine=$(($testine + 1)) && echo -e "$(date --rfc-3339 ns) [CHECK_TEST_remove] made it to copying backups? $testine " >> log.log
-                [[ -d "$DATA_TARGET/appdata" ]] && cp -r --force "$DATA_TARGET"/appdata "$BACKUP_DIR"/data/vinegar/appdata 2>&1 | tee -a log.log
+                #[[ -d "$DATA_TARGET/appdata" ]] && cp -r --force "$DATA_TARGET"/appdata "$BACKUP_DIR"/data/vinegar/appdata 2>&1 | tee -a log.log
+                # ^^ need some more testing?
                 [[ -f "$DATA_TARGET/settings.reg" ]] && cp --force "$DATA_TARGET"/settings.reg "$BACKUP_DIR"/data/vinegar/settings.reg 2>&1 | tee -a log.log
                 break
             fi
