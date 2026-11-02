@@ -4,7 +4,7 @@
 # about
 testine="0"
 MADE_BY="Casts" # 
-PRO_VERSION="v6.0.1" # 
+PRO_VERSION="v9.0.1" # 
 PRO_ABOUT="# notes
 \n# this makes a copy of your roblox cookies in your home dir called .RBX_Backup,
 \n# ---> dont give that out. <---
