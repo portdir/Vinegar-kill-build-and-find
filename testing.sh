@@ -4,7 +4,7 @@
 # about
 testine="0"
 MADE_BY="Casts" # 
-PRO_VERSION="v9.1.1" # 
+PRO_VERSION="v9.4.1" # 
 PRO_ABOUT="# notes
 \n# this makes a copy of your roblox cookies in your home dir called .RBX_Backup,
 \n# ---> dont give that out . <---
@@ -127,49 +127,50 @@ RUN_Vinegar_FOR_SETUP(){
 };
 
 MAKE_BACKUP_FILES(){
+     # kill VINEGAR safle
     local VINEGAR_PID=$(pgrep -f "/home/$USER/.var/app/org.vinegarhq.Vinegar/data/vinegar/versions")
-
     if [ -n "$VINEGAR_PID" ]; then
         kill "$VINEGAR_PID" 
         testine=$(($testine + 1)) && echo -e "$(date --rfc-3339 ns) [CHECK_TEST_remove] made it to killing a VINEGAR pid of $VINEGAR_PID ? $testine " >> log.log
     fi
-    local log_files=("$VINEGAR_DIR"/cache/vinegar/logs/*) 
-    local meow=$(grep -q 'DBG Backed up Studio Registry' $VINEGAR_DIR/cache/vinegar/logs/"$(ls -1rt $VINEGAR_DIR/cache/vinegar/logs/| tail -n1 )" ) 
 
-    if [ -f "${log_files[0]}" ]; then
-        testine=$(($testine + 1)) && echo -e "$(date --rfc-3339 ns) [CHECK_TEST_remove] made it to there are logs? $testine " >> log.log
-        while true; do
-            if $meow; then
-                flatpak kill "$FLATPAK_ID" &>/dev/null || true
-                echo -e "$(date --rfc-3339 ns) [CHECK_fun] MAKE_BACKUP_FILES " >> log.log
-                # make sure that the file are there
-                [[ -d "$BACKUP_DIR" ]] && rm -rf "${BACKUP_DIR:?}" 2>&1 | tee -a log.log
-                [[ ! -d "$BACKUP_DIR" ]] && mkdir -p "$BACKUP_DIR"/data/vinegar/appdata/Roblox/ 2>&1 | tee -a log.log
+    # start making backup
+    local meow=$(grep -q 'INF Goodbye!' $VINEGAR_DIR/cache/vinegar/logs/"$(ls -1rt $VINEGAR_DIR/cache/vinegar/logs/| tail -n1 )" ) 
+    while true; do
+        if $meow; then
+            flatpak kill "$FLATPAK_ID" &>/dev/null || true
+            echo -e "$(date --rfc-3339 ns) [CHECK_fun] MAKE_BACKUP_FILES " >> log.log
+            # make sure that the file are there
+            [[ -d "$BACKUP_DIR" ]] && rm -rf "${BACKUP_DIR:?}" 2>&1 | tee -a log.log
+            [[ ! -d "$BACKUP_DIR" ]] && mkdir -p "$BACKUP_DIR"/data/vinegar/ 2>&1 | tee -a log.log
 
-                sleep 1
-                # git the rbx appdata from your file
-                testine=$(($testine + 1)) && echo -e "$(date --rfc-3339 ns) [CHECK_TEST_remove] made it to copying backups? $testine " >> log.log
+            sleep 1
+            # git the rbx appdata from your file
+            [[ -d "$DATA_TARGET/appdata" ]] && cp -r --force "$DATA_TARGET"/appdata "$BACKUP_DIR"/data/vinegar/ 2>&1 | tee -a log.log
 
-                local GSxml="$DATA_TARGET/appdata/Roblox/GlobalSettings_13.xml"
-                [[ -f "$GSxml" ]] && cp --force "$GSxml" "$BACKUP_DIR"/data/vinegar/appdata/Roblox/GlobalSettings_13.xml 2>&1 | tee -a log.log
-                # ^^ need some more testing?
-
-                #[[ -d "$DATA_TARGET/appdata" ]] && cp -r --force "$DATA_TARGET"/appdata "$BACKUP_DIR"/data/vinegar/appdata 2>&1 | tee -a log.log
-                # ^^ need some more testing?
-                
-                [[ -f "$DATA_TARGET/settings.reg" ]] && cp --force "$DATA_TARGET"/settings.reg "$BACKUP_DIR"/data/vinegar/settings.reg 2>&1 | tee -a log.log
-                break
+            local log_files=("$VINEGAR_DIR"/cache/vinegar/logs/*) 
+            if [ -f "${log_files[0]}" ]; then
+                testine=$(($testine + 1)) && echo -e "$(date --rfc-3339 ns) [CHECK_TEST_remove] made it to there are settings.reg? $testine " >> log.log
+                #[[ -f "$DATA_TARGET/settings.reg" ]] && cp --force "$DATA_TARGET"/settings.reg "$BACKUP_DIR"/data/vinegar/settings.reg 2>&1 | tee -a log.log
+                # ^^ need some more testing? many need to grep
             fi
-                sleep 2
-        done
-    fi
+            break
+        fi
+            sleep 1
+            brackuptime="60"
+            local uptime=$(($uptime + 1))
+            echo $uptime
+            (($uptime > $brackuptime)) && echo -e "$(date --rfc-3339 ns) [CHECK] cant make it out of loop? $testine " >> log.log 
+            (($uptime > $brackuptime)) && [[ -d "$DATA_TARGET/appdata" ]] && cp -r --force "$DATA_TARGET"/appdata "$BACKUP_DIR"/data/vinegar/ 2>&1 | tee -a log.log
+            (($uptime > $brackuptime)) && break
+    done
 };
 
 COPY_BACKUP_TO_Vinegar(){
     echo -e "$(date --rfc-3339 ns) [CHECK_fun] COPY_BACKUP_TO_Vinegar" >> log.log
     #take from backup move back to RBXs
     [[ -d "$DATA_TARGET" ]] && rm -rf "${DATA_TARGET:?}" 2>&1 | tee -a log.log
-    [[ ! -d "$DATA_TARGET" ]] && mkdir -p "$DATA_TARGET/data/vinegar/" 2>&1 | tee -a log.log
+    [[ ! -d "$DATA_TARGET" ]] && mkdir -p "$DATA_TARGET" 2>&1 | tee -a log.log
     sleep 1
     [[ -d "$BACKUP_DIR" && -d "$DATA_TARGET" ]] && cp -rf "${BACKUP_DIR:?}"/data/vinegar/. "$DATA_TARGET" 2>&1 | tee -a log.log
 };
@@ -212,9 +213,8 @@ $(MAKE_LINE)
         RUN_Vinegar_FOR_SETUP
         MAKE_LINE
         echo "COPY_BACKUP_TO_Vinegar"
-    elif [[ $yesno =~ ^([Nn][Oo]|[Nn])$ ]]; then
         COPY_BACKUP_TO_Vinegar
-
+    elif [[ $yesno =~ ^([Nn][Oo]|[Nn])$ ]]; then
         MAKE_LINE
         echo "No Data / Removing BACKUP"
         # runs the program no data
@@ -229,7 +229,7 @@ $(MAKE_LINE)
         echo "RUN_Vinegar_FOR_SETUP"
         RUN_Vinegar_FOR_SETUP
     else 
-    echo -e "$(date --rfc-3339 ns) [ERROR]  $USER That was not a input" 2>&1 | tee -a log.log
+    echo -e "$(date --rfc-3339 ns) [ERROR] $USER That was not a input" 2>&1 | tee -a log.log
     exit 1
     fi
     echo -e "$(date --rfc-3339 ns) [CHECK] im done installing $FLATPAK_ID for $USER" 2>&1 | tee -a log.log

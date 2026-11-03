@@ -1,0 +1,80 @@
+none
+[STARTED] 2026-11-02 16:54:33.943379876-08:00
+[CHECK] org.vinegarhq.Vinegar
+[CHECK] Casts
+[CHECK] v9.4.1
+[CHECK] THERE is file DATA_TARGET /home/portdir/.var/app/org.vinegarhq.Vinegar
+[CHECK] THERE is file DATA_TARGET /home/portdir/.RBX_Backup
+[CHECK] THERE is file DATA_TARGET /home/portdir/.var/app/org.vinegarhq.Vinegar/data/vinegar
+2026-11-02 16:54:33.946866085-08:00 [CHECK] DONE checking dir's
+2026-11-02 16:54:33.947546343-08:00 [CHECK_fun] RUNINGask 
+2026-11-02 16:54:35.445624976-08:00 [CHECK_TEST_remove] made it to there are logs? 1 
+2026-11-02 16:54:35.462036633-08:00 [CHECK_fun] MAKE_BACKUP_FILES 
+2026-11-02 16:54:36.484838488-08:00 [CHECK_TEST_remove] made it to copying backups? 2 
+2026-11-02 16:54:37.511650557-08:00 [CHECK_fun] UNINSTALL_Vinegar 
+2026-11-02 16:54:38.090469712-08:00 [CHECK_fun] INSTALL_Vinegar 
+2026-11-02 16:54:40.554419378-08:00 [CHECK_fun] RUN_Vinegar_FOR_SETUP 
+[CHECK] /home/portdir/.var/app/org.vinegarhq.Vinegar MADE
+2026-11-02 16:54:41.573375281-08:00 [CHECK_fun] COPY_BACKUP_TO_Vinegar
+2026-11-02 16:54:42.602447265-08:00 [CHECK] im done installing org.vinegarhq.Vinegar for portdir
+[STARTED] 2026-11-02 17:13:00.643608911-08:00
+[CHECK] org.vinegarhq.Vinegar
+[CHECK] Casts
+[CHECK] v9.4.1
+[CHECK] THERE is file DATA_TARGET /home/portdir/.var/app/org.vinegarhq.Vinegar
+[CHECK] THERE is file DATA_TARGET /home/portdir/.RBX_Backup
+[CHECK] THERE is file DATA_TARGET /home/portdir/.var/app/org.vinegarhq.Vinegar/data/vinegar
+2026-11-02 17:13:00.647076467-08:00 [CHECK] DONE checking dir's
+2026-11-02 17:13:00.647790028-08:00 [CHECK_fun] RUNINGask 
+2026-11-02 17:13:02.642358356-08:00 [CHECK_fun] MAKE_BACKUP_FILES 
+2026-11-02 17:13:03.713516865-08:00 [CHECK_TEST_remove] made it to there are settings.reg? 1 
+2026-11-02 17:13:04.715809323-08:00 [CHECK_fun] UNINSTALL_Vinegar 
+2026-11-02 17:13:05.897451274-08:00 [CHECK_fun] INSTALL_Vinegar 
+2026-11-02 17:13:08.542486624-08:00 [CHECK_fun] RUN_Vinegar_FOR_SETUP 
+[CHECK] /home/portdir/.var/app/org.vinegarhq.Vinegar MADE
+2026-11-02 17:13:09.561818451-08:00 [CHECK_fun] COPY_BACKUP_TO_Vinegar
+2026-11-02 17:13:10.613583737-08:00 [CHECK] im done installing org.vinegarhq.Vinegar for portdir
+[STARTED] 2026-11-02 17:13:26.672841588-08:00
+[CHECK] org.vinegarhq.Vinegar
+[CHECK] Casts
+[CHECK] v9.4.1
+[CHECK] THERE is file DATA_TARGET /home/portdir/.var/app/org.vinegarhq.Vinegar
+[CHECK] THERE is file DATA_TARGET /home/portdir/.RBX_Backup
+[CHECK] THERE is file DATA_TARGET /home/portdir/.var/app/org.vinegarhq.Vinegar/data/vinegar
+2026-11-02 17:13:26.676229954-08:00 [CHECK] DONE checking dir's
+2026-11-02 17:13:26.676943967-08:00 [CHECK_fun] RUNINGask 
+2026-11-02 17:13:44.728597219-08:00 [CHECK_fun] cleanup 
+[STARTED] 2026-11-02 17:13:50.896629138-08:00
+[CHECK] org.vinegarhq.Vinegar
+[CHECK] Casts
+[CHECK] v9.4.1
+[CHECK] THERE is file DATA_TARGET /home/portdir/.var/app/org.vinegarhq.Vinegar
+[CHECK] THERE is file DATA_TARGET /home/portdir/.RBX_Backup
+[CHECK] THERE is file DATA_TARGET /home/portdir/.var/app/org.vinegarhq.Vinegar/data/vinegar
+2026-11-02 17:13:50.900130789-08:00 [CHECK] DONE checking dir's
+2026-11-02 17:13:50.900865250-08:00 [CHECK_fun] RUNINGask 
+2026-11-02 17:13:52.364205711-08:00 [CHECK_fun] MAKE_BACKUP_FILES 
+2026-11-02 17:13:53.408100259-08:00 [CHECK_TEST_remove] made it to there are settings.reg? 1 
+2026-11-02 17:13:54.410564702-08:00 [CHECK_fun] UNINSTALL_Vinegar 
+2026-11-02 17:13:55.018620575-08:00 [CHECK_fun] INSTALL_Vinegar 
+2026-11-02 17:13:57.776105934-08:00 [CHECK_fun] RUN_Vinegar_FOR_SETUP 
+[CHECK] /home/portdir/.var/app/org.vinegarhq.Vinegar MADE
+2026-11-02 17:13:58.794504311-08:00 [CHECK_fun] COPY_BACKUP_TO_Vinegar
+2026-11-02 17:13:59.798480778-08:00 [CHECK] im done installing org.vinegarhq.Vinegar for portdir
+[STARTED] 2026-11-02 17:17:26.728597859-08:00
+[CHECK] org.vinegarhq.Vinegar
+[CHECK] Casts
+[CHECK] v9.4.1
+[CHECK] THERE is file DATA_TARGET /home/portdir/.var/app/org.vinegarhq.Vinegar
+[CHECK] NO file BACKUP_DIR /home/portdir/.RBX_Backup
+[CHECK] NO file DATA_TARGET /home/portdir/.var/app/org.vinegarhq.Vinegar/data/vinegar
+2026-11-02 17:17:26.732168881-08:00 [CHECK] DONE checking dir's
+2026-11-02 17:17:26.732859729-08:00 [CHECK_fun] RUNINGask 
+2026-11-02 17:17:30.572380672-08:00 [CHECK_fun] MAKE_BACKUP_FILES 
+2026-11-02 17:17:31.574682636-08:00 [CHECK_TEST_remove] made it to there are settings.reg? 1 
+2026-11-02 17:17:32.576999257-08:00 [CHECK_fun] UNINSTALL_Vinegar 
+2026-11-02 17:17:33.256572662-08:00 [CHECK_fun] INSTALL_Vinegar 
+2026-11-02 17:17:36.132830072-08:00 [CHECK_fun] RUN_Vinegar_FOR_SETUP 
+[CHECK] /home/portdir/.var/app/org.vinegarhq.Vinegar MADE
+2026-11-02 17:17:37.151740047-08:00 [CHECK_fun] COPY_BACKUP_TO_Vinegar
+2026-11-02 17:17:38.155687367-08:00 [CHECK] im done installing org.vinegarhq.Vinegar for portdir
